@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Sachh</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="transition.css"> -->
+</head>
+<body>
+    <div class="page-transition"></div>
+    <div class="page-wrapper">
+        <header>
+            <nav>
+                <a href="index.html" class="logo" style="font-weight: bold; text-decoration: underline;">Sachh</a>
+                <div class="nav-links">
+                    <a href="agents.html" class="nav-link" data-transition="true">Agents</a>
+                    <a href="data.html" class="nav-link" data-transition="true">Data</a>
+                    <a href="publications.html" class="nav-link" data-transition="true">Publications</a>
+                    <a href="consult.html" class="nav-link" data-transition="true">Consulting</a>
+                </div>
+                <button class="mobile-menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mobile-nav">
+                    <div class="mobile-nav-links">
+                        <a href="agents.html" class="nav-link" data-transition="true">Agents</a>
+                        <a href="data.html" class="nav-link" data-transition="true">Data</a>
+                        <a href="publications.html" class="nav-link" data-transition="true">Publications</a>
+                        <a href="consult.html" class="nav-link" data-transition="true">Consulting</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            <div class="main-box transition-trigger" id="main-box">
+                <div class="clouds-container">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="cloud cloud-4"></div>
+                </div>
+                <div class="title-container">
+                    <h1 class="brand-title">Sachh</h1>
+                    <p class="brand-subtitle">Tech. Truth. Think Thank.</p>
+                </div>
+            </div>
+            
+            <section class="main-sections">
+                <div class="section-card">
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h2>Our Services</h2>
+                            <p>We combine rigorous research methods with practical insights to deliver solutions that work in the real world.</p>
+                        </div>
+                        <a href="services.html" class="section-button nav-link" data-transition="true">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="section-card">
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h2>Our Impact</h2>
+                            <p>Our work has influenced policy  across multiple sectors and regions, creating measurable positive outcomes.</p>
+                        </div>
+                        <a href="#" class="section-button nav-link" data-transition="true">See Impact</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Sachh</p>
+        <p>Expert in the loop policy reporting.</p>
+        <p><a href="index.html">About</a> | <a href="team.html" class="nav-link" data-transition="true">Team</a> | <a href="services.html" class="nav-link" data-transition="true">Services</a> | <a href="careers.html" class="nav-link" data-transition="true">Careers</a></p>
+    </footer>
+    
+    <script src="main.js"></script>
+    <script>
+        // Updated page transition functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageWrapper = document.querySelector('.page-wrapper');
+            const mainBox = document.getElementById('main-box');
+            const navLinks = document.querySelectorAll('.nav-link[data-transition="true"]');
+            
+            // Handle clicks on navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    
+                    // Get main box position and dimensions
+                    const mainBoxRect = mainBox.getBoundingClientRect();
+                    
+                    // Store original positions
+                    const originalTop = mainBoxRect.top;
+                    const originalLeft = mainBoxRect.left;
+                    const originalWidth = mainBoxRect.width;
+                    const originalHeight = mainBoxRect.height;
+                    
+                    // Fix the main box in its current position
+                    mainBox.style.position = 'fixed';
+                    mainBox.style.top = originalTop + 'px';
+                    mainBox.style.left = originalLeft + 'px';
+                    mainBox.style.width = originalWidth + 'px';
+                    mainBox.style.height = originalHeight + 'px';
+                    
+                    // Initialize transition
+                    pageWrapper.classList.add('transition-active');
+                    mainBox.classList.add('transition-active');
+                    document.body.classList.add('transition-active');
+                    
+                    // Delay navigation until animation completes
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 600);
+                });
+            });
+            
+            // Handle page load
+            window.addEventListener('pageshow', function(e) {
+                if (e.persisted) {
+                    // Page was loaded from cache (back button)
+                    pageWrapper.classList.remove('transition-active');
+                    mainBox.classList.remove('transition-active');
+                    document.body.classList.remove('transition-active');
+                    
+                    // Reset any inline styles
+                    mainBox.style.position = '';
+                    mainBox.style.top = '';
+                    mainBox.style.left = '';
+                    mainBox.style.width = '';
+                    mainBox.style.height = '';
+                }
+            });
+            
+            // Handle initial page load - fade in content
+            document.body.classList.add('fade-in');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Sachh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">Sachh</a>
+                <div class="nav-links">
+                    <a href="agents.html">Agents</a>
+                    <a href="data.html">Data</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="consult.html">Consulting</a>
+                </div>
+                <button class="mobile-menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mobile-nav">
+                    <div class="mobile-nav-links">
+                        <a href="agents.html">Agents</a>
+                        <a href="data.html">Data</a>
+                        <a href="publications.html">Publications</a>
+                        <a href="consult.html">Consulting</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="team-container">
+                <div class="team-header">
+                    <h1>Our Services</h1>
+                    <p>Expert policy analysis and AI guidance to help you navigate complex regulatory landscapes.</p>
+                </div>
+            </section>
+
+            <div class="services-list service-card-grid">
+                <div class="service-card" data-service="gnosis">
+                    <div class="service-card-icon">
+                        <span>📚</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>Gnosis</h2>
+                            <p>Interactive document analysis with AI-powered insights and policy implications extraction.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="agents">
+                    <div class="service-card-icon">
+                        <span>🤖</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>AI Agents</h2>
+                            <p>Specialized AI assistants for policy analysis, ethics guidance, research, and regulatory compliance.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="insights">
+                    <div class="service-card-icon">
+                        <span>💡</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>Policy Insights</h2>
+                            <p>Industry analysis, trend reports, and expert commentary on AI governance and policy.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="data">
+                    <div class="service-card-icon">
+                        <span>📊</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>Policy Data</h2>
+                            <p>Access curated datasets for AI governance and regulatory analysis.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="publications">
+                    <div class="service-card-icon">
+                        <span>📝</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>Publications</h2>
+                            <p>Research papers, policy briefs, and technical reports on AI ethics and governance.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+                
+                <div class="service-card" data-service="consult">
+                    <div class="service-card-icon">
+                        <span>👥</span>
+                    </div>
+                    <div class="service-card-content">
+                        <div class="service-card-text">
+                            <h2>Consultation</h2>
+                            <p>Expert advisory services and personalized guidance on AI policy, ethics, and governance.</p>
+                        </div>
+                        <div class="service-card-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal/Popup Overlay -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Service Title</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <p>Service description will appear here...</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="modal-button" id="modalButton">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Sachh</p>
+        <p>Expert in the loop policy reporting.</p>
+        <p><a href="index.html">About</a> | <a href="team.html">Team</a> | <a href="services.html">Services</a> | <a href="careers.html">Careers</a></p>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="main.js"></script>
+</body>
+</html>

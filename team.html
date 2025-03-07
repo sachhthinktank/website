@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Sachh</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        /* Founders section with improved depth effect */
+        .founders-section {
+            margin-bottom: 4rem;
+            flex: 0 0 35%;  /* Reduced from 40% to 35% */
+            height: 420px;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12), inset 0 -3px 8px rgba(0,0,0,0.05);
+            overflow: visible;
+            background-color: #e6f2ff;
+            margin-left: 4rem;
+        }
+
+        /* Updated founders container to match roles-container */
+        .founders-container {
+            position: relative;
+            height: 100%; /* Changed from calc(100% - 80px) to use full height */
+            overflow: hidden;
+            border-radius: 15px; /* Add border radius to container instead of separate parts */
+            background-color: #e6f2ff;
+            padding: 0;
+        }
+        
+        /* Change founders to match roles-container */
+        .founders {
+            max-height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+            padding: 1rem;
+            background-color: transparent;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        /* Custom scrollbar styling */
+        .founders::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .founders::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .founders::-webkit-scrollbar-thumb {
+            background-color: #FFFDD0;
+            border-radius: 4px;
+        }
+
+        /* For Firefox */
+        .founders {
+            scrollbar-color: #FFFDD0 transparent;
+            scrollbar-width: thin;
+        }
+
+        /* Add a subtle indicator that content is scrollable */
+        .founders::after {
+            content: "";
+            position: sticky;
+            bottom: 0;
+            display: block;
+            height: 20px;
+            margin-top: -20px;
+            pointer-events: none;
+        }
+
+        /* Cloud Animation - updated to match consult.html */
+        .founders-container .cloud {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation-name: cloud-drift;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            z-index: 1;
+        }
+
+        .founders-container .cloud:before, .founders-container .cloud:after {
+            content: '';
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .founders-container .cloud-1 {
+            top: 15%;
+            width: 80px;
+            height: 30px;
+            animation-duration: 90s;
+        }
+
+        .founders-container .cloud-1:before {
+            width: 45px;
+            height: 45px;
+            top: -15px;
+            left: 10px;
+        }
+
+        .founders-container .cloud-1:after {
+            width: 35px;
+            height: 35px;
+            top: -12px;
+            right: 12px;
+        }
+
+        .founders-container .cloud-2 {
+            top: 45%;
+            width: 100px;
+            height: 40px;
+            animation-duration: 120s;
+            animation-delay: -20s;
+        }
+
+        .founders-container .cloud-2:before {
+            width: 60px;
+            height: 60px;
+            top: -20px;
+            left: 10px;
+        }
+
+        .founders-container .cloud-2:after {
+            width: 50px;
+            height: 50px;
+            top: -15px;
+            right: 15px;
+        }
+
+        .founders-container .cloud-3 {
+            top: 70%;
+            width: 60px;
+            height: 25px;
+            animation-duration: 70s;
+            animation-delay: -35s;
+        }
+
+        .founders-container .cloud-3:before {
+            width: 40px;
+            height: 40px;
+            top: -15px;
+            left: 5px;
+        }
+
+        .founders-container .cloud-3:after {
+            width: 30px;
+            height: 30px;
+            top: -10px;
+            right: 7px;
+        }
+
+        .founders-container .cloud-4 {
+            top: 80%;
+            width: 60px;
+            height: 23px;
+            animation-duration: 100s;
+            animation-delay: -15s;
+        }
+
+        .founders-container .cloud-4:before {
+            width: 37px;
+            height: 37px;
+            top: -13px;
+            left: 7px;
+        }
+
+        .founders-container .cloud-4:after {
+            width: 30px;
+            height: 30px;
+            top: -8px;
+            right: 8px;
+        }
+
+        /* Add cloud animation keyframes to match consult.html */
+        @keyframes cloud-drift {
+            from {
+                left: -150px;
+            }
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Improve founder card styling */
+        .founder {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .founder:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+
+        /* Founder details section - without background */
+        .founder-details {
+            flex: 0 0 50%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 440px;
+            border-left: 1px solid #eee;
+            background-color: transparent;
+            border-radius: 10px;
+            margin-left: 5rem;
+            box-shadow: none;
+        }
+
+        .founder-details img {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            margin-right: -2rem;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .founder-details img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .founder-details p {
+            text-align: center;
+            max-width: 400px;
+            margin-right: -2rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: black;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .team-container {
+                flex-direction: column;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">Sachh</a>
+                <div class="nav-links">
+                    <a href="agents.html">Agents</a>
+                    <a href="data.html">Data</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="consult.html">Consulting</a>
+                </div>
+                <button class="mobile-menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mobile-nav">
+                    <div class="mobile-nav-links">
+                        <a href="agents.html">Agents</a>
+                        <a href="data.html">Data</a>
+                        <a href="publications.html">Publications</a>
+                        <a href="consult.html">Consulting</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <main class="team-container">
+            <section class="team-header">
+                <h1>Our Team</h1>
+                <p>Meet the people behind Sachh who are dedicated to delivering expert policy reporting and insights.</p>
+            </section>
+            
+            <section class="founders-section">
+                <!-- Remove the h2 "Founders" heading -->
+                
+                <div class="founders-container">
+                    <!-- Add cloud elements in the container -->
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="cloud cloud-4"></div>
+                    
+                    <div class="founders">
+                        <div class="founder selected" data-name="sanjana">
+                            <p>Sanjana Senthil Kumar</p>
+                            <p>CEO</p>
+                        </div>
+                        
+                        <div class="founder" data-name="soumya">
+                            <p>Soumya Snigdha Kundu</p>
+                            <p>CTO</p>
+                        </div>
+                        
+                        <!-- Adding more founder examples to demonstrate scrolling -->
+                        <div class="founder" data-name="example1">
+                            <p>Name</p>
+                            <p>Advisor</p>
+                        </div>
+                        
+                        <!-- Adding 3 more founder cards -->
+                        <div class="founder" data-name="example2">
+                            <p>Jane Smith</p>
+                            <p>Chief Data Officer</p>
+                        </div>
+                        
+                        <div class="founder" data-name="example3">
+                            <p>Michael Johnson</p>
+                            <p>Head of Research</p>
+                        </div>
+                        
+                        <div class="founder" data-name="example4">
+                            <p>Priya Patel</p>
+                            <p>Policy Director</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="founder-details">
+                <img src="https://images.unsplash.com/photo-1740328398503-20fe0f3ff00f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8" id="founderImage" alt="Founder Image">
+                <p id="founderText">Sanjana Senthil Kumar: Research Associate @ Raisna House | Visiting Fellow @ Integration House. All things policy.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Sachh</p>
+        <p>Expert in the loop policy reporting.</p>
+        <p><a href="index.html">About</a> | <a href="team.html">Team</a> | <a href="services.html">Services</a> | <a href="careers.html">Careers</a></p>
+    </footer>
+
+    <script>
+        const founders = document.querySelectorAll('.founder');
+        const founderImage = document.getElementById('founderImage');
+        const founderText = document.getElementById('founderText');
+
+        const founderData = {
+            sanjana: {
+                image: 'https://images.unsplash.com/photo-1740328398503-20fe0f3ff00f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8',
+                text: 'Sanjana Senthil Kumar: Research Associate @ Raisna House | Visiting Fellow @ Integration House. All things policy.'
+            },
+            soumya: {
+                image: 'https://images.unsplash.com/photo-1740324361353-7856adbaa885?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8',
+                text: 'Soumya Snigdha Kundu: Ph.D. @ King\'s College London | Prev @ Oxford & TRIUMF. All things tech.'
+            },
+            example1: {
+                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Senior Advisor with extensive experience in policy development and implementation.'
+            },
+            example2: {
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Jane Smith: Chief Data Officer with expertise in data governance and analytics. Former Lead Data Scientist at Global Policy Institute.'
+            },
+            example3: {
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Michael Johnson: Head of Research with 15+ years experience in policy analysis. Ph.D. from Harvard Kennedy School.'
+            },
+            example4: {
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Priya Patel: Policy Director specializing in international relations and governance. Former diplomat and strategic policy advisor.'
+            }
+        };
+
+        founders.forEach(founder => {
+            founder.addEventListener('click', () => {
+                // Remove selected class from all founders
+                founders.forEach(f => f.classList.remove('selected'));
+                
+                // Add selected class to clicked founder
+                founder.classList.add('selected');
+                
+                // Update details section
+                const founderName = founder.dataset.name;
+                founderImage.src = founderData[founderName].image;
+                founderText.textContent = founderData[founderName].text;
+            });
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

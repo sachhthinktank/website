@@ -1,0 +1,90 @@
+/* Page Transition Animations */
+body.transition-active {
+  overflow: hidden;
+}
+
+/* Main box transition styles */
+.main-box {
+  transition: transform 0.7s cubic-bezier(0.86, 0, 0.07, 1), 
+              border-radius 0.7s ease-in-out;
+  transform-origin: center;
+  z-index: 1;
+}
+
+.main-box.transition-active {
+  position: fixed;
+  z-index: 9999;
+  transform: scale(4);
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Hide content during transition except the main box */
+.page-wrapper.transition-active > *:not(.main-box) {
+  opacity: 0;
+  transition: opacity 1.3s ease;
+}
+
+/* The content inside main box should fade out during transition */
+.main-box.transition-active .title-container {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Page transition overlay */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e6f2ff;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.page-transition.active {
+  opacity: 1;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .main-box.transition-active {
+    transform: scale(6); /* More scale on mobile for full coverage */
+  }
+}
+
+/* Animation for new page entry */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+/* Transition delays for sequential elements */
+.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.delay-300 {
+  transition-delay: 0.3s;
+}
