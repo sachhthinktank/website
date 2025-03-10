@@ -64,6 +64,9 @@
             cursor: pointer;
             transition: background-color 0.2s;
             font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .filter-option:hover {
@@ -74,6 +77,20 @@
             background-color: #e6f2ff;
             font-weight: 500;
         }
+        
+        .filter-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .filter-dot[data-filter="regulatory"] { background-color: #FFD6A5; }
+        .filter-dot[data-filter="metrics"] { background-color: #CAFFBF; }
+        .filter-dot[data-filter="governance"] { background-color: #9BF6FF; }
+        .filter-dot[data-filter="compliance"] { background-color: #BDB2FF; }
+        .filter-dot[data-filter="regional"] { background-color: #FFC6FF; }
+        .filter-dot[data-filter="historical"] { background-color: #FDFFB6; }
         
         /* Search container style */
         .search-container {
@@ -373,13 +390,26 @@
                             <i>🔍</i> Filter
                         </div>
                         <div class="filter-dropdown" id="filterDropdown">
+                            <!-- Updated filter options with colored dots -->
                             <div class="filter-option active" data-filter="all">All Categories</div>
-                            <div class="filter-option" data-filter="regulatory">Regulatory Data</div>
-                            <div class="filter-option" data-filter="metrics">Policy Metrics</div>
-                            <div class="filter-option" data-filter="governance">Governance Indices</div>
-                            <div class="filter-option" data-filter="compliance">Compliance Data</div>
-                            <div class="filter-option" data-filter="regional">Regional Analysis</div>
-                            <div class="filter-option" data-filter="historical">Historical Trends</div>
+                            <div class="filter-option" data-filter="regulatory">
+                                Regulatory Data <span class="filter-dot" data-filter="regulatory"></span>
+                            </div>
+                            <div class="filter-option" data-filter="metrics">
+                                Policy Metrics <span class="filter-dot" data-filter="metrics"></span>
+                            </div>
+                            <div class="filter-option" data-filter="governance">
+                                Governance Indices <span class="filter-dot" data-filter="governance"></span>
+                            </div>
+                            <div class="filter-option" data-filter="compliance">
+                                Compliance Data <span class="filter-dot" data-filter="compliance"></span>
+                            </div>
+                            <div class="filter-option" data-filter="regional">
+                                Regional Analysis <span class="filter-dot" data-filter="regional"></span>
+                            </div>
+                            <div class="filter-option" data-filter="historical">
+                                Historical Trends <span class="filter-dot" data-filter="historical"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="search-container" style="margin-top: -30px;">

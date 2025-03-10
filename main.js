@@ -89,6 +89,66 @@ const serviceData = {
     }
 };
 
+// Consultation service data for consult page modals
+const consultServiceData = {
+    'policy': {
+        title: 'Policy Analysis',
+        description: `<p>Comprehensive evaluation of regulatory frameworks and policy implications.</p>
+        <ul>
+            <li>Regulatory impact assessments</li>
+            <li>Compliance strategy development</li>
+            <li>Policy trend forecasting</li>
+            <li>Regulatory gap analysis</li>
+            <li>Cross-jurisdictional policy comparison</li>
+            <li>Custom policy briefings</li>
+        </ul>
+        <p>Our policy analysis services help organizations navigate complex regulatory environments and anticipate policy changes that might impact your operations.</p>`,
+        link: '#contact'
+    },
+    'strategy': {
+        title: 'Strategic Planning',
+        description: `<p>Future-proof your business with our comprehensive strategic planning services.</p>
+        <ul>
+            <li>Market positioning analysis</li>
+            <li>Vision and mission refinement</li>
+            <li>Competitive landscape evaluation</li>
+            <li>Short and long-term objective setting</li>
+            <li>Implementation roadmapping</li>
+            <li>Performance metrics development</li>
+        </ul>
+        <p>Our strategic planning services align your organizational capabilities with market opportunities while navigating policy constraints.</p>`,
+        link: '#contact'
+    },
+    'risk': {
+        title: 'Risk Assessment',
+        description: `<p>Advanced methodologies to identify and mitigate potential business threats.</p>
+        <ul>
+            <li>Comprehensive risk identification</li>
+            <li>AI-powered risk analysis</li>
+            <li>Quantitative and qualitative assessment</li>
+            <li>Mitigation strategy development</li>
+            <li>Monitoring framework creation</li>
+            <li>Scenario planning and stress testing</li>
+        </ul>
+        <p>Our risk assessment services help you identify, measure, and prepare for potential threats to your business operations and compliance status.</p>`,
+        link: '#contact'
+    },
+    'custom': {
+        title: 'Custom Solutions',
+        description: `<p>Tailored consulting engagements designed specifically for your organization's needs.</p>
+        <ul>
+            <li>Diagnostic assessment</li>
+            <li>Customized solution architecture</li>
+            <li>Collaborative development process</li>
+            <li>Implementation support</li>
+            <li>Change management guidance</li>
+            <li>Results measurement and optimization</li>
+        </ul>
+        <p>When standard approaches don't address your unique challenges, our custom solutions provide tailored consulting expertise to meet your specific requirements.</p>`,
+        link: '#contact'
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function() {
     // Navigation functionality
     const mobileMenuButton = document.querySelector(".mobile-menu-button");
@@ -118,49 +178,102 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-    // Modal functionality
+    // Global modal functionality
     const modal = document.getElementById('serviceModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    const modalButton = document.getElementById('modalButton');
-    const closeModal = document.getElementById('closeModal');
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    // Open modal when a service card is clicked
-    if (serviceCards.length > 0 && modal) {
-        serviceCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const serviceId = card.getAttribute('data-service');
-                const service = serviceData[serviceId];
-                
-                modalTitle.textContent = service.title;
-                modalBody.innerHTML = service.description;
-                modalButton.href = service.link;
-                
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
+    if (modal) {
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalButton = document.getElementById('modalButton');
+        const closeModal = document.getElementById('closeModal');
         
-        // Close modal when the close button is clicked
+        // Check if we're on services page or consult page
+        const isConsultPage = document.querySelector('.section-button') !== null;
+        const isServicesPage = document.querySelector('.service-card') !== null;
+        
+        // Setup service cards for services page
+        if (isServicesPage) {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            if (serviceCards.length > 0) {
+                serviceCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const serviceId = card.getAttribute('data-service');
+                        const service = serviceData[serviceId];
+                        
+                        modalTitle.textContent = service.title;
+                        modalBody.innerHTML = service.description;
+                        modalButton.href = service.link;
+                        modalButton.textContent = 'Learn More';
+                        
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+            }
+        }
+        
+        // Setup consultation cards for consult page
+        if (isConsultPage) {
+            const sectionButtons = document.querySelectorAll('.section-button');
+            
+            if (sectionButtons.length > 0) {
+                sectionButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const serviceId = button.getAttribute('data-service');
+                        const service = consultServiceData[serviceId];
+                        
+                        modalTitle.textContent = service.title;
+                        modalBody.innerHTML = service.description;
+                        modalButton.href = service.link;
+                        modalButton.textContent = 'Contact Us';
+                        
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+                
+                // Handle contact button in modal for consult page
+                modalButton.addEventListener('click', () => {
+                    if (isConsultPage) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                        document.querySelector(modalButton.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Pre-select the service in the dropdown if possible
+                        const serviceSelect = document.getElementById('service');
+                        if (serviceSelect) {
+                            const currentService = modalTitle.textContent;
+                            for (let option of serviceSelect.options) {
+                                if (option.text.includes(currentService)) {
+                                    serviceSelect.value = option.value;
+                                    break;
+                                }
+                            }
+                        }
+                        return false;
+                    }
+                });
+            }
+        }
+        
+        // Shared modal close handlers
         closeModal.addEventListener('click', () => {
             modal.classList.remove('active');
-            document.body.style.overflow = ''; // Re-enable scrolling
+            document.body.style.overflow = '';
         });
         
-        // Close modal when clicking outside the modal content
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = '';
             }
         });
         
-        // Close modal when ESC key is pressed
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 modal.classList.remove('active');
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = '';
             }
         });
     }
@@ -312,28 +425,36 @@ function initConsultPage() {
     }
 }
 
-// Filter for Publications
-// Initialize filter dropdown functionality
+// Filter for Publications and Datasets
+// Updated Filter functionality for Publications and Datasets
 document.addEventListener('DOMContentLoaded', function() {
     const filterButton = document.getElementById('filterButton');
     const filterDropdown = document.getElementById('filterDropdown');
     const filterOptions = document.querySelectorAll('.filter-option');
-    const publicationSearch = document.getElementById('publicationSearch');
-    const publicationCards = document.querySelectorAll('.publication-card');
     
-    // Toggle filter dropdown
+    // Set search input and cards based on available elements
+    const publicationSearch = document.getElementById('publicationSearch');
+    const datasetSearch = document.getElementById('datasetSearch');
+    
+    let searchInput, cards;
+    if (publicationSearch) {
+        searchInput = publicationSearch;
+        cards = document.querySelectorAll('.publication-card');
+    } else if (datasetSearch) {
+        searchInput = datasetSearch;
+        cards = document.querySelectorAll('.dataset-card');
+    }
+    
     filterButton.addEventListener('click', function() {
         filterDropdown.classList.toggle('show');
     });
     
-    // Close dropdown when clicking elsewhere
     document.addEventListener('click', function(e) {
         if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
             filterDropdown.classList.remove('show');
         }
     });
     
-    // Filter publications by category
     filterOptions.forEach(option => {
         option.addEventListener('click', function() {
             // Update active state
@@ -343,8 +464,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get selected filter
             const filter = this.getAttribute('data-filter');
             
-            // Filter publications
-            publicationCards.forEach(card => {
+            // Filter cards by category
+            cards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category') === filter) {
                     card.style.display = '';
                 } else {
@@ -352,29 +473,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Close dropdown
             filterDropdown.classList.remove('show');
         });
     });
     
-    // Search publications
-    publicationSearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        
-        publicationCards.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            const category = card.getAttribute('data-category').toLowerCase();
-            
-            // Check if any active category filter
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
             const activeFilter = document.querySelector('.filter-option.active').getAttribute('data-filter');
             
-            if ((title.includes(searchTerm) || description.includes(searchTerm)) && 
-                (activeFilter === 'all' || category === activeFilter)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+            cards.forEach(card => {
+                const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
+                const description = (card.querySelector('p')?.textContent || '').toLowerCase();
+                const category = card.getAttribute('data-category');
+                
+                if ((title.includes(searchTerm) || description.includes(searchTerm)) &&
+                    (activeFilter === 'all' || category === activeFilter)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         });
-    });
+    }
 });

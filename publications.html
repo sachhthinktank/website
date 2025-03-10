@@ -64,6 +64,9 @@
             cursor: pointer;
             transition: background-color 0.2s;
             font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .filter-option:hover {
@@ -74,6 +77,19 @@
             background-color: #e6f2ff;
             font-weight: 500;
         }
+        
+        .filter-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .filter-dot[data-filter="policy"] { background-color: #FFD6A5; }
+        .filter-dot[data-filter="technical"] { background-color: #CAFFBF; }
+        .filter-dot[data-filter="research"] { background-color: #9BF6FF; }
+        .filter-dot[data-filter="case-study"] { background-color: #BDB2FF; }
+        .filter-dot[data-filter="report"] { background-color: #FFC6FF; }
         
         /* Search container style */
         .search-container {
@@ -365,12 +381,23 @@
                             <i>🔍</i> Filter
                         </div>
                         <div class="filter-dropdown" id="filterDropdown">
+                            <!-- Updated filter options with colored dots -->
                             <div class="filter-option active" data-filter="all">All Categories</div>
-                            <div class="filter-option" data-filter="policy">Policy</div>
-                            <div class="filter-option" data-filter="technical">Technical</div>
-                            <div class="filter-option" data-filter="research">Research</div>
-                            <div class="filter-option" data-filter="case-study">Case Studies</div>
-                            <div class="filter-option" data-filter="report">Reports</div>
+                            <div class="filter-option" data-filter="policy">
+                                Policy <span class="filter-dot" data-filter="policy"></span>
+                            </div>
+                            <div class="filter-option" data-filter="technical">
+                                Technical <span class="filter-dot" data-filter="technical"></span>
+                            </div>
+                            <div class="filter-option" data-filter="research">
+                                Research <span class="filter-dot" data-filter="research"></span>
+                            </div>
+                            <div class="filter-option" data-filter="case-study">
+                                Case Studies <span class="filter-dot" data-filter="case-study"></span>
+                            </div>
+                            <div class="filter-option" data-filter="report">
+                                Reports <span class="filter-dot" data-filter="report"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="search-container" style="margin-top: -30px;">
