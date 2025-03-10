@@ -254,8 +254,39 @@
         @media (max-width: 768px) {
             .team-container {
                 flex-direction: column;
+                margin-bottom: 2rem; /* Reduce bottom margin of container */
             }
             
+            .founder-details img {
+                display: none; /* Hide images on small screens */
+            }
+            
+            .founders-section {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                margin-bottom: 1.5rem; /* Reduce space between sections */
+                flex: 0 0 auto;
+                width: calc(100% - 2rem);
+                height: 350px;
+            }
+            
+            .founder-details {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                margin-bottom: 0; /* Remove bottom margin */
+                padding: 1.5rem 1.5rem 0.5rem; /* Reduce bottom padding */
+                height: auto;
+                width: calc(100% - 2rem);
+            }
+            
+            .founder-details p {
+                margin-right: 0;
+                margin-bottom: 0.5rem; /* Reduce space after paragraph */
+            }
+            
+            main {
+                margin-bottom: 1rem; /* Reduce space between main content and footer */
+            }
         }
     </style>
 </head>
@@ -363,7 +394,7 @@
                 text: 'Sanjana Senthil Kumar: Research Associate @ Raisna House | Visiting Fellow @ Integration House. All things policy.'
             },
             soumya: {
-                image: 'https://images.unsplash.com/photo-1740324361353-7856adbaa885?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2fHx8ZW58MHx8fHx8',
+                image: 'https://images.unsplash.com/photo-1740324361353-7856adbaa885?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw6fHx8ZW58MHx8fHx8',
                 text: 'Soumya Snigdha Kundu: Ph.D. @ King\'s College London | Prev @ Oxford & TRIUMF. All things tech.'
             },
             example1: {

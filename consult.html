@@ -332,6 +332,65 @@
             background-color: white;
         }
 
+        /* Responsive styles for contact form - fix border-radius and spacing issues */
+        @media (max-width: 767px) {
+            .contact {
+                border-radius: 6px !important; /* Ensure border-radius is maintained */
+                width: 100%; /* Full width on small screens */
+                height: auto; /* Let height be determined by content */
+                padding: 1rem 0.7rem; /* Slightly smaller padding on small screens */
+            }
+            
+            .contact h2 {
+                margin-bottom: 1rem; /* Reduced space below title */
+                font-size: 1.3rem; /* Slightly smaller font */
+            }
+            
+            .form-group {
+                margin-bottom: 0.7rem; /* Reduced space between form elements */
+            }
+            
+            .form-group textarea {
+                min-height: 80px; /* Smaller textarea height */
+            }
+            
+            .submit-btn {
+                padding: 0.6rem; /* Smaller padding */
+                margin-top: 0.5rem; /* Reduced top margin */
+                margin-bottom: 0.5rem; /* Add bottom margin */
+            }
+            
+            /* Make the contact column less tall on mobile */
+            .contact-column {
+                min-height: 0;
+                margin-bottom: 1.5rem; /* Add some space at the bottom */
+            }
+            
+            .contact form {
+                margin-bottom: 0; /* Remove bottom margin from form */
+            }
+            
+            /* Reduce overall vertical spacing */
+            .content-container {
+                gap: -1rem; /* Smaller gap between columns on mobile - reduced from 2rem */
+            }
+            
+            /* Make services column have less bottom margin on mobile */
+            .services-column {
+                margin-bottom: 0; /* Remove bottom margin */
+            }
+            
+            /* Reduce spacing on the last card for mobile view */
+            .section-card:last-child {
+                margin-bottom: -5.5rem;
+            }
+            
+            /* Ensure modal works well on small screens */
+            .modal-overlay.active {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>

@@ -557,8 +557,9 @@ footer {
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 1rem;
     padding-right: 1rem; /* Reduce right padding specifically */
+    padding-bottom: 1.6rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
