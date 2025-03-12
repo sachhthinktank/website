@@ -746,7 +746,7 @@ footer {
     .chat-input {
         padding: 10px 15px;
         position: fixed;
-        bottom: 60px;
+        bottom: -5px;
         left: 0;
         right: 0;
         background-color: white;
