@@ -1,3 +1,6 @@
+/**************************************
+ * SERVICE & CONSULT DATA OBJECTS
+ **************************************/
 // Service data for modals
 const serviceData = {
     'gnosis': {
@@ -149,6 +152,9 @@ const consultServiceData = {
     }
 };
 
+/**************************************
+ * CORE WEBSITE FUNCTIONALITY
+ **************************************/
 document.addEventListener("DOMContentLoaded", function() {
     // Navigation functionality
     const mobileMenuButton = document.querySelector(".mobile-menu-button");
@@ -290,6 +296,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+/**************************************
+ * CAREERS PAGE FUNCTIONALITY
+ **************************************/
 // Function to filter roles on the careers page
 function filterRoles() {
     const searchInput = document.getElementById('roleSearch').value.toLowerCase();
@@ -311,48 +320,11 @@ function filterSection(roles, searchInput) {
     }
 }
 
+/**************************************
+ * CONSULTING PAGE FUNCTIONALITY
+ **************************************/
 // Function to initialize the consult page functionality
 function initConsultPage() {
-    // Service details content for consultation modals
-    const consultServiceData = {
-        policy: {
-            title: "Policy Analysis",
-            content: `<p>Comprehensive evaluation of regulatory frameworks and policy implications.</p>
-            <ul>
-                <li>Regulatory impact assessments</li>
-                <li>Policy trend forecasting</li>
-                <li>Compliance strategy</li>
-            </ul>`
-        },
-        strategy: {
-            title: "Strategic Planning",
-            content: `<p>Roadmaps for sustainable growth through market intelligence and analysis.</p>
-            <ul>
-                <li>Market analysis</li>
-                <li>Vision refinement</li>
-                <li>Objective setting</li>
-            </ul>`
-        },
-        risk: {
-            title: "Risk Assessment",
-            content: `<p>Advanced methodologies to identify and mitigate potential business threats.</p>
-            <ul>
-                <li>Risk identification</li>
-                <li>AI-powered analysis</li>
-                <li>Mitigation strategies</li>
-            </ul>`
-        },
-        custom: {
-            title: "Custom Solutions",
-            content: `<p>Tailored consulting engagements designed specifically for your organization's needs.</p>
-            <ul>
-                <li>Diagnostic assessment</li>
-                <li>Collaborative solution development</li>
-                <li>Implementation support</li>
-            </ul>`
-        }
-    };
-
     // Form validation for the consultation request form
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -425,8 +397,10 @@ function initConsultPage() {
     }
 }
 
+/**************************************
+ * PUBLICATIONS & DATASETS FILTERING
+ **************************************/
 // Filter for Publications and Datasets
-// Updated Filter functionality for Publications and Datasets
 document.addEventListener('DOMContentLoaded', function() {
     const filterButton = document.getElementById('filterButton');
     const filterDropdown = document.getElementById('filterDropdown');
@@ -445,42 +419,48 @@ document.addEventListener('DOMContentLoaded', function() {
         cards = document.querySelectorAll('.dataset-card');
     }
     
-    filterButton.addEventListener('click', function() {
-        filterDropdown.classList.toggle('show');
-    });
-    
-    document.addEventListener('click', function(e) {
-        if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
-            filterDropdown.classList.remove('show');
-        }
-    });
-    
-    filterOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            // Update active state
-            filterOptions.forEach(opt => opt.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Get selected filter
-            const filter = this.getAttribute('data-filter');
-            
-            // Filter cards by category
-            cards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            filterDropdown.classList.remove('show');
+    if (filterButton) {
+        filterButton.addEventListener('click', function() {
+            filterDropdown.classList.toggle('show');
         });
-    });
+        
+        document.addEventListener('click', function(e) {
+            if (!filterButton.contains(e.target) && !filterDropdown.contains(e.target)) {
+                filterDropdown.classList.remove('show');
+            }
+        });
+    }
     
-    if (searchInput) {
+    if (filterOptions) {
+        filterOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Update active state
+                filterOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Get selected filter
+                const filter = this.getAttribute('data-filter');
+                
+                // Filter cards by category
+                if (cards) {
+                    cards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+                
+                filterDropdown.classList.remove('show');
+            });
+        });
+    }
+    
+    if (searchInput && cards) {
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
-            const activeFilter = document.querySelector('.filter-option.active').getAttribute('data-filter');
+            const activeFilter = document.querySelector('.filter-option.active')?.getAttribute('data-filter');
             
             cards.forEach(card => {
                 const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
@@ -493,6 +473,54 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     card.style.display = 'none';
                 }
+            });
+        });
+    }
+});
+
+/**************************************
+ * TEAM PAGE FUNCTIONALITY
+ **************************************/
+document.addEventListener('DOMContentLoaded', function() {
+    const founders = document.querySelectorAll('.founder');
+    const founderImage = document.getElementById('founderImage');
+    const founderText = document.getElementById('founderText');
+
+    if (founders.length > 0 && founderImage && founderText) {
+        const founderData = {
+            sanjana: {
+                image: 'https://images.unsplash.com/photo-1740328398503-20fe0f3ff00f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8',
+                text: 'Sanjana Senthil Kumar: Research Associate @ Raisna House | Visiting Fellow @ Integration House. All things policy.'
+            },
+            soumya: {
+                image: 'https://images.unsplash.com/photo-1740324361353-7856adbaa885?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw6fHx8ZW58MHx8fHx8',
+                text: 'Soumya Snigdha Kundu: Ph.D. @ King\'s College London | Prev @ Oxford & TRIUMF. All things tech.'
+            },
+            example1: {
+                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Senior Advisor with extensive experience in policy development and implementation.'
+            },
+            example2: {
+                image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Jane Smith: Chief Data Officer with expertise in data governance and analytics. Former Lead Data Scientist at Global Policy Institute.'
+            },
+            example3: {
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Michael Johnson: Head of Research with 15+ years experience in policy analysis. Ph.D. from Harvard Kennedy School.'
+            },
+            example4: {
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+                text: 'Priya Patel: Policy Director specializing in international relations and governance. Former diplomat and strategic policy advisor.'
+            }
+        };
+
+        founders.forEach(founder => {
+            founder.addEventListener('click', () => {
+                founders.forEach(f => f.classList.remove('selected'));
+                founder.classList.add('selected');
+                const founderName = founder.dataset.name;
+                founderImage.src = founderData[founderName].image;
+                founderText.textContent = founderData[founderName].text;
             });
         });
     }
