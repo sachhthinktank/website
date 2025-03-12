@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gnosis - Policy Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Gnosis</div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../publications.html">Publications</a>
+                <a href="../datasets.html">Datasets</a>
+                <a href="../agents.html">Agents</a>
+            </div>
+            <button class="mobile-menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../publications.html">Publications</a>
+            <a href="../datasets.html">Datasets</a>
+            <a href="../agents.html">Agents</a>
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <div class="sidebar">
+            <button class="new-chat-button">
+                <i class="fas fa-plus"></i> New Chat
+            </button>
+            <!-- Cloud animation for sidebar -->
+            <div class="clouds-container sidebar-clouds">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="cloud cloud-4"></div>
+            </div>
+            <div class="sidebar-section">
+                <h3>Recent Chats</h3>
+                <ul class="chat-history">
+                    <li><i class="fas fa-comments"></i> Healthcare Policy Analysis</li>
+                    <li><i class="fas fa-comments"></i> Climate Regulation Summary</li>
+                    <li><i class="fas fa-comments"></i> Tax Law Comparison</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>Policy Domains</h3>
+                <ul class="policy-domains">
+                    <li><i class="fas fa-landmark"></i> Governance</li>
+                    <li><i class="fas fa-heartbeat"></i> Healthcare</li>
+                    <li><i class="fas fa-leaf"></i> Environment</li>
+                    <li><i class="fas fa-university"></i> Education</li>
+                    <li><i class="fas fa-coins"></i> Economy</li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <button class="settings-button"><i class="fas fa-cog"></i> Settings</button>
+                <button class="help-button"><i class="fas fa-question-circle"></i> Help</button>
+            </div>
+        </div>
+
+        <div class="chat-main">
+            <div class="chat-header">
+                <h1>Policy Intelligence Assistant</h1>
+                <div class="chat-actions">
+                    <button class="clear-chat"><i class="fas fa-trash-alt"></i></button>
+                    <button class="export-chat"><i class="fas fa-download"></i></button>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <!-- Cloud animation for chat area -->
+                <div class="clouds-container messages-clouds">
+                    <div class="cloud cloud-1"></div>
+                    <div class="cloud cloud-2"></div>
+                    <div class="cloud cloud-3"></div>
+                    <div class="cloud cloud-4"></div>
+                </div>
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>Hello! I'm your policy intelligence assistant. How can I help you analyze or develop policy today?</p>
+                            <p>You can ask me about:</p>
+                            <ul>
+                                <li>Policy analysis and evaluation</li>
+                                <li>Regulatory frameworks</li>
+                                <li>Comparing policies across jurisdictions</li>
+                                <li>Impact assessment of policy changes</li>
+                                <li>Drafting policy briefs or memos</li>
+                            </ul>
+                        </div>
+                        <div class="message-info">
+                            <span class="timestamp">Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message user-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>Can you analyze the recent changes to healthcare policy in the EU and compare them with US regulations?</p>
+                        </div>
+                        <div class="message-info">
+                            <span class="timestamp">Just now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <h3>EU vs US Healthcare Policy Comparison</h3>
+                            <p>Recent changes to EU healthcare policy have focused on three main areas:</p>
+                            <ol>
+                                <li><strong>Data Privacy:</strong> The EU has strengthened patient data protection under GDPR with healthcare-specific provisions.</li>
+                                <li><strong>Cross-border Care:</strong> New directives enhance patient rights to seek treatment across EU member states.</li>
+                                <li><strong>Pharmaceutical Regulation:</strong> Streamlined approval processes while maintaining rigorous safety standards.</li>
+                            </ol>
+                            <p>In comparison, US healthcare regulations have:</p>
+                            <ol>
+                                <li><strong>State-by-state Variation:</strong> Less centralized approach with significant differences between states.</li>
+                                <li><strong>Insurance-focused:</strong> Recent changes centered around insurance markets and coverage requirements.</li>
+                                <li><strong>Innovation Emphasis:</strong> Faster drug approval pathways with different risk assessment models.</li>
+                            </ol>
+                            <div class="citation">
+                                <p><strong>Sources:</strong></p>
+                                <ul>
+                                    <li>European Commission. (2023). <em>Healthcare Policy Framework 2023-2027</em>.</li>
+                                    <li>US Department of Health. (2022). <em>Federal Healthcare Regulatory Review</em>.</li>
+                                </ul>
+                            </div>
+                            <div class="policy-tools">
+                                <button><i class="fas fa-table"></i> View Comparison Table</button>
+                                <button><i class="fas fa-file-pdf"></i> Export as Brief</button>
+                            </div>
+                        </div>
+                        <div class="message-info">
+                            <span class="timestamp">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-tools">
+                    <button class="attach-button" title="Attach document">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <button class="template-button" title="Use template">
+                        <i class="fas fa-file-alt"></i>
+                    </button>
+                </div>
+                <textarea placeholder="Ask about policy analysis, regulatory frameworks, or policy development..."></textarea>
+                <button class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="context-panel">
+            <!-- Cloud animation for context panel -->
+            <div class="clouds-container context-clouds">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="cloud cloud-4"></div>
+            </div>
+            <div class="context-header">
+                <h3>Analysis Context</h3>
+                <button class="close-context"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="context-content">
+                <div class="context-section">
+                    <h4>Key Regulations</h4>
+                    <ul>
+                        <li><i class="fas fa-file-contract"></i> EU Directive 2011/24/EU</li>
+                        <li><i class="fas fa-file-contract"></i> Affordable Care Act (US)</li>
+                        <li><i class="fas fa-file-contract"></i> GDPR Healthcare Provisions</li>
+                    </ul>
+                </div>
+                <div class="context-section">
+                    <h4>Referenced Data</h4>
+                    <div class="data-visualization">
+                        <div class="vis-placeholder">Healthcare Spending Comparison Graph</div>
+                    </div>
+                </div>
+                <div class="context-section">
+                    <h4>Analysis Methods</h4>
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i> Regulatory Impact Assessment</li>
+                        <li><i class="fas fa-balance-scale"></i> Policy Equity Analysis</li>
+                        <li><i class="fas fa-globe"></i> Comparative Policy Framework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Gnosis Policy Intelligence</p>
+        <p>Gnosis can make mistakes unfortunately. Please check important info.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
