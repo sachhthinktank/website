@@ -21,6 +21,17 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebar.classList.toggle('active');
     });
     
+    // Close sidebar when clicking on any clickable element inside it on mobile
+    const sidebarClickableElements = sidebar.querySelectorAll('.chat-history li, .policy-domains li, .new-chat-button, .settings-button, .help-button');
+    
+    sidebarClickableElements.forEach(element => {
+        element.addEventListener('click', function() {
+            if (window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+    
     // Context panel toggle
     const contextToggleBtn = document.createElement('button');
     contextToggleBtn.classList.add('context-toggle');
