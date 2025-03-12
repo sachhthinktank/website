@@ -279,7 +279,14 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.chat-main:not(.context-hidden) {
     max-width: calc(100% - 260px - 300px);
+}
+
+.chat-main.context-hidden {
+    max-width: calc(100% - 260px);
 }
 
 .chat-header {
@@ -656,6 +663,27 @@ nav {
     border-radius: 4px;
 }
 
+/* Style for bring-back-context button */
+.bring-back-context {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 100;
+    display: none; /* Initially hidden */
+}
+
+.bring-back-context:hover {
+    color: #333;
+    background-color: #f0f0f0;
+}
+
 /* ===============================
    FOOTER
    =============================== */
@@ -686,18 +714,35 @@ footer {
         right: 0;
         top: 60px;
         bottom: 80px;
-        transform: translateX(100%);
+        /* We'll control this with inline styles now instead of classes */
+        /* transform: translateX(100%); */
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         z-index: 90;
     }
 
+    /* Remove the class-based transform since we're using inline styles */
+    /* 
     .context-panel.active {
         transform: translateX(0);
     }
+    */
 
     .chat-main {
         max-width: calc(100% - 260px);
     }
+
+    .chat-main.context-hidden {
+        max-width: calc(100% - 260px);
+    }
+}
+
+/* Hidden context panel */
+.context-hidden .context-panel {
+    transform: translateX(100%);
+}
+
+.context-hidden .chat-main {
+    max-width: calc(100% - 260px);
 }
 
 @media (max-width: 768px) {
@@ -1034,5 +1079,31 @@ footer {
     
     .policy-tools button {
         width: 100%;
+    }
+}
+
+/* ===============================
+   ADDITIONAL FIXES
+   =============================== */
+
+/* Make context toggle button visible on smaller screens */
+.context-toggle {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .context-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        color: #666;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .context-toggle:hover {
+        color: #333;
     }
 }

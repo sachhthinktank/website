@@ -32,23 +32,76 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Context panel toggle
-    const contextToggleBtn = document.createElement('button');
-    contextToggleBtn.classList.add('context-toggle');
-    contextToggleBtn.innerHTML = '<i class="fas fa-info-circle"></i>';
-    document.querySelector('.chat-header .chat-actions').prepend(contextToggleBtn);
-    
+    // SIMPLIFIED CONTEXT PANEL TOGGLE USING A FLAG
     const contextPanel = document.querySelector('.context-panel');
-    const closeContext = document.querySelector('.close-context');
-    
+    const closeContextButton = document.querySelector('.close-context');
+    const chatMain = document.querySelector('.chat-main');
+
+    // Create (or get) the toggle button with an arrow icon.
+    let contextToggleBtn = document.querySelector('.context-toggle');
+    if (!contextToggleBtn) {
+        contextToggleBtn = document.createElement('button');
+        contextToggleBtn.classList.add('context-toggle');
+        document.querySelector('.chat-actions').prepend(contextToggleBtn);
+    }
+
+    // Create a button to bring back the context panel when it is closed
+    let bringBackContextBtn = document.querySelector('.bring-back-context');
+    if (!bringBackContextBtn) {
+        bringBackContextBtn = document.createElement('button');
+        bringBackContextBtn.classList.add('bring-back-context');
+        bringBackContextBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+        document.body.appendChild(bringBackContextBtn);
+        bringBackContextBtn.style.display = 'none'; // Hide initially
+    }
+
+    // Use a flag to track panel state (for small screens only)
+    let panelOpen = true; // Assume panel is open by default on larger screens
+
+    // For screens ≤1200px, start with panel closed.
+    if (window.innerWidth <= 1200) {
+        panelOpen = false;
+        contextPanel.style.transform = 'translateX(100%)';
+        chatMain.classList.add('context-hidden');
+        contextToggleBtn.innerHTML = '<i class="fas fa-arrow-right"></i>';
+        bringBackContextBtn.style.display = 'block'; // Show bring back button
+    } else {
+        contextToggleBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+    }
+
+    // Toggle function to update state
+    function toggleContextPanel(open) {
+        if (open) {
+            contextPanel.style.transform = 'translateX(0)';
+            chatMain.classList.remove('context-hidden');
+            chatMain.classList.remove('context-full'); // Remove the class when opening
+            contextToggleBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+            bringBackContextBtn.style.display = 'none'; // Hide bring back button
+        } else {
+            contextPanel.style.transform = 'translateX(100%)';
+            chatMain.classList.add('context-hidden');
+            chatMain.classList.add('context-full'); // Add the class when closing
+            contextToggleBtn.innerHTML = '<i class="fas fa-arrow-right"></i>';
+            bringBackContextBtn.style.display = 'block'; // Show bring back button
+        }
+        panelOpen = open;
+    }
+
+    // Toggle button event
     contextToggleBtn.addEventListener('click', function() {
-        contextPanel.classList.toggle('active');
+        toggleContextPanel(!panelOpen);
     });
-    
-    closeContext.addEventListener('click', function() {
-        contextPanel.classList.remove('active');
+
+    // Close button event uses the same toggle function (set to closed)
+    closeContextButton.addEventListener('click', function() {
+        toggleContextPanel(false);
     });
-    
+
+    // Bring back button event uses the same toggle function (set to open)
+    bringBackContextBtn.addEventListener('click', function() {
+        toggleContextPanel(true);
+    });
+
     // Auto-resize textarea
     const textarea = document.querySelector('.chat-input textarea');
     
@@ -308,6 +361,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
+        .context-full {
+            width: 100%;
+        }
+
         .template-dropdown {
             position: absolute;
             background-color: white;
